@@ -89,6 +89,8 @@ $ git commit -am "add name prompt to hello_world"
 > no `git add` because -a flag includes every tracked changed file into the commit
 
 8. Запуште изменения в удалёный репозиторий.
+<details><summary>actions</summary>
+
 ```bash
 $ git push -u origin main
 Enumerating objects: 14, done.
@@ -102,6 +104,7 @@ To https://github.com/Dan41kPlay/lab02.git
    a193c8a..f677fbd  main -> main
 branch 'main' set up to track 'origin/main'.
 ```
+</details>
 
 9. Проверьте, что история коммитов доступна в удалёный репозитории.
 > Commit history is accessible
