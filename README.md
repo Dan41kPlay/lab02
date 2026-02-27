@@ -158,7 +158,24 @@ To https://github.com/Dan41kPlay/lab02.git
 > Branch `patch1` is accessible
 
 5. Создайте pull-request `patch1 -> master`.
+> Created a PR via github.com
+
 6. В локальной копии в ветке `patch1` добавьте в исходный код комментарии.
+```bash
+$ nano hello_world.cpp
+$ cat hello_world.cpp
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string name; // name of the user will be stored here
+    std::cout << "Enter your name: "; // prompt the user to enter their name
+    std::cin >> name; // read the name
+    std::cout << "Hello world from " << name << std::endl; // print greetings to the world from the user
+    return 0; // end program
+}
+```
+
 7. **commit**, **push**.
 8. Проверьте, что новые изменения есть в созданном на **шаге 5** pull-request
 9. В удалённый репозитории выполните  слияние PR `patch1 -> master` и удалите ветку `patch1` в удаленном репозитории.
