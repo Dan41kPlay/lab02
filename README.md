@@ -7,6 +7,7 @@
 > Created an empty repository on github.com with MIT license
 2. Выполните инструкцию по созданию первого коммита на странице репозитория, созданного на предыдещем шаге.
 <details><summary>actions</summary>
+
 ```bash
 $ git init
 Initialized empty Git repository in /home/dp/Documents/sem02_TP/lab02/.git/
@@ -85,8 +86,25 @@ $ git commit -am "add name prompt to hello_world"
  1 file changed, 5 insertions(+), 1 deletion(-)
 ```
 
+> no `git add` because -a flag includes every tracked changed file into the commit
+
 8. Запуште изменения в удалёный репозиторий.
+```bash
+$ git push -u origin main
+Enumerating objects: 14, done.
+Counting objects: 100% (14/14), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (12/12), 2.13 KiB | 1.07 MiB/s, done.
+Total 12 (delta 4), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (4/4), completed with 1 local object.
+To https://github.com/Dan41kPlay/lab02.git
+   a193c8a..f677fbd  main -> main
+branch 'main' set up to track 'origin/main'.
+```
+
 9. Проверьте, что история коммитов доступна в удалёный репозитории.
+> Commit history is accessible
 
 ### Part II
 
