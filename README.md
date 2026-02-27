@@ -110,12 +110,89 @@ branch 'main' set up to track 'origin/main'.
 
 **Note:** *Работать продолжайте с теми же репоззиториями, что и в первой части задания.*
 1. В локальной копии репозитория создайте локальную ветку `patch1`.
+```bash
+$ git checkout -b patch1
+```
+
 2. Внесите изменения в ветке `patch1` по исправлению кода и избавления от `using namespace std;`.
+```bash
+$ nano hello_world.cpp
+$ cat hello_world.cpp
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string name;
+    std::cout << "Enter your name: ";
+    std::cin >> name;
+    std::cout << "Hello world from " << name << std::endl;
+    return 0;
+}
+```
+
 3. **commit**, **push** локальную ветку в удалённый репозиторий.
+<details><summary>actions</summary>
+
+```bash
+$ git commit -am "refactoring: remove 'using namespace std;' from hello_world"
+[patch1 da5b20b] refactoring: remove 'using namespace std;' from hello_world
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+$ git push origin patch1
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 416 bytes | 416.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote: 
+remote: Create a pull request for 'patch1' on GitHub by visiting:
+remote:      https://github.com/Dan41kPlay/lab02/pull/new/patch1
+remote: 
+To https://github.com/Dan41kPlay/lab02.git
+ * [new branch]      patch1 -> patch1
+```
+</details>
+
 4. Проверьте, что ветка `patch1` доступна в удалёный репозитории.
+> Branch `patch1` is accessible
+
 5. Создайте pull-request `patch1 -> master`.
+> Created a PR via github.com
+
 6. В локальной копии в ветке `patch1` добавьте в исходный код комментарии.
+```bash
+$ nano hello_world.cpp
+$ cat hello_world.cpp
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string name; // name of the user will be stored here
+    std::cout << "Enter your name: "; // prompt the user to enter their name
+    std::cin >> name; // read the name
+    std::cout << "Hello world from " << name << std::endl; // print greetings to the world from the user
+    return 0; // end program
+}
+```
+
 7. **commit**, **push**.
+```bash
+$ git commit -am "add comments to hello_world, update readme"
+[patch1 bab97cd] add comments to hello_world, update readme
+ 2 files changed, 22 insertions(+), 5 deletions(-)
+$ git push origin patch1
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 780 bytes | 780.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/Dan41kPlay/lab02.git
+   c524886..bab97cd  patch1 -> patch1
+```
+
 8. Проверьте, что новые изменения есть в созданном на **шаге 5** pull-request
 9. В удалённый репозитории выполните  слияние PR `patch1 -> master` и удалите ветку `patch1` в удаленном репозитории.
 10. Локально выполните **pull**.
