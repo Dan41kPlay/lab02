@@ -177,6 +177,8 @@ int main() {
 ```
 
 7. **commit**, **push**.
+<details><summary>actions</summary>
+
 ```bash
 $ git commit -am "add comments to hello_world, update readme"
 [patch1 bab97cd] add comments to hello_world, update readme
@@ -192,12 +194,63 @@ remote: Resolving deltas: 100% (1/1), completed with 1 local object.
 To https://github.com/Dan41kPlay/lab02.git
    c524886..bab97cd  patch1 -> patch1
 ```
+</details>
 
 8. Проверьте, что новые изменения есть в созданном на **шаге 5** pull-request
+> New changes did appear in the PR
+
 9. В удалённый репозитории выполните  слияние PR `patch1 -> master` и удалите ветку `patch1` в удаленном репозитории.
+> Merged `patch1` into `main` and deleted branch `patch1` via github.com
+
 10. Локально выполните **pull**.
+<details><summary>actions</summary>
+
+```bash
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+$ git pull origin main
+remote: Enumerating objects: 1, done.
+remote: Counting objects: 100% (1/1), done.
+remote: Total 1 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (1/1), 921 bytes | 921.00 KiB/s, done.
+From https://github.com/Dan41kPlay/lab02
+ * branch            main       -> FETCH_HEAD
+   9d66859..d72d9c9  main       -> origin/main
+Updating 9d66859..d72d9c9
+Fast-forward
+ README.md       | 77 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ hello_world.cpp | 12 +++++-------
+ 2 files changed, 82 insertions(+), 7 deletions(-)
+```
+</details>
+
 11. С помощью команды **git log** просмотрите историю в локальной версии ветки `master`.
+<details><summary>actions</summary>
+
+```bash
+$ git log --oneline --graph --all
+*   d72d9c9 (HEAD -> main, origin/main) Merge pull request #1 from Dan41kPlay/patch1
+|\  
+| * 9363fa3 (origin/patch1, patch1) update readme once again
+| * bab97cd add comments to hello_world, update readme
+| * c524886 update readme
+| * da5b20b refactoring: remove 'using namespace std;' from hello_world
+|/  
+* 9d66859 update readme; part 1 is finished
+* f677fbd update readme
+* 16275df add name prompt to hello_world
+* f93f8a5 create hello_world program in c++ (needs refactoring)
+* bf0ac1b add step01 to readme
+* a193c8a add readme file
+* 941c4d3 Initial commit
+```
+</details>
+
 12. Удалите локальную ветку `patch1`.
+```bash
+$ git brach -d patch1
+```
 
 ### Part III
 
