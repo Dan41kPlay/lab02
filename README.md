@@ -137,7 +137,7 @@ int main() {
 $ git commit -am "refactoring: remove 'using namespace std;' from hello_world"
 [patch1 da5b20b] refactoring: remove 'using namespace std;' from hello_world
  1 file changed, 4 insertions(+), 6 deletions(-)
-$ git push -u origin patch1
+$ git push origin patch1
 Enumerating objects: 5, done.
 Counting objects: 100% (5/5), done.
 Delta compression using up to 4 threads
@@ -177,6 +177,22 @@ int main() {
 ```
 
 7. **commit**, **push**.
+```bash
+$ git commit -am "add comments to hello_world, update readme"
+[patch1 bab97cd] add comments to hello_world, update readme
+ 2 files changed, 22 insertions(+), 5 deletions(-)
+$ git push origin patch1
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 780 bytes | 780.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/Dan41kPlay/lab02.git
+   c524886..bab97cd  patch1 -> patch1
+```
+
 8. Проверьте, что новые изменения есть в созданном на **шаге 5** pull-request
 9. В удалённый репозитории выполните  слияние PR `patch1 -> master` и удалите ветку `patch1` в удаленном репозитории.
 10. Локально выполните **pull**.
