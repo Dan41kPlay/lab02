@@ -4,7 +4,33 @@
 ### Part I
 
 1. Создайте пустой репозиторий на сервисе github.com (или gitlab.com, или bitbucket.com).
+> Created an empty repository on github.com with MIT license
 2. Выполните инструкцию по созданию первого коммита на странице репозитория, созданного на предыдещем шаге.
+```bash
+$ git init
+Initialized empty Git repository in /home/dp/Documents/sem02_TP/lab02/.git/
+$ git branch -m main
+$ git remote add https://github.com/Dan41kPlay/lab02.git
+$ git pull https://github.com/Dan41kPlay/lab02.git main
+From https://github.com/Dan41kPlay/lab02
+ * branch            main       -> FETCH_HEAD
+$ git add README.md
+$ git commit -m "add readme file"
+[main a193c8a] add readme file
+ 1 file changed, 43 insertions(+)
+ create mode 100644 README.md
+$ git push -u origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 1.78 KiB | 1.78 MiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/Dan41kPlay/lab02.git
+   941c4d3..a193c8a  main -> main
+branch 'main' set up to track 'origin/main'.
+```
+
 3. Создайте файл `hello_world.cpp` в локальной копии репозитория (который должен был появиться на шаге 2). Реализуйте программу **Hello world** на языке C++ используя плохой стиль кода. Например, после заголовочных файлов вставьте строку `using namespace std;`.
 4. Добавьте этот файл в локальную копию репозитория.
 5. Закоммитьте изменения с *осмысленным* сообщением.
