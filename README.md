@@ -259,11 +259,153 @@ $ git brach -d patch1
 
 **Note:** *Работать продолжайте с теми же репоззиториями, что и в первой части задания.*
 1. Создайте новую локальную ветку `patch2`.
+```bash
+$ git checkout -b patch2
+Switched to a new branch 'patch2'
+```
+
 2. Измените *code style* с помощью утилиты [**clang-format**](http://clang.llvm.org/docs/ClangFormat.html). Например, используя опцию `-style=Mozilla`.
+```bash
+$ clang-format -style=Mozilla -i hello_world.cpp
+```
+
 3. **commit**, **push**, создайте pull-request `patch2 -> master`.
+<details><summary>actions</summary>
+
+```bash
+$ git commit -am "apply Mozilla code style to hello_world"
+[patch2 20d75d2] apply Mozilla code style to hello_world
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+$ git push origin patch2
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 401 bytes | 401.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+remote: 
+remote: Create a pull request for 'patch2' on GitHub by visiting:
+remote:      https://github.com/Dan41kPlay/lab02/pull/new/patch2
+remote: 
+To https://github.com/Dan41kPlay/lab02.git
+ * [new branch]      patch2 -> patch2
+```
+</details>
+
 4. В ветке **master** в удаленном репозитории измените комментарии, например, расставьте знаки препинания, переведите комментарии на другой язык.
+<details><summary>actions</summary>
+
+```bash
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+$ nano hello_world.cpp 
+$ git commit -am "updated comments in hello_world"
+[main 4db6187] updated comments in hello_world
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+$ git push origin main
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 352 bytes | 352.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/Dan41kPlay/lab02.git
+   509f069..4db6187  main -> main
+```
+</details>
+
 5. Убедитесь, что в pull-request появились *конфликтны*.
+> Conflicts did in fact appear
+
 6. Для этого локально выполните **pull** + **rebase** (точную последовательность команд, следует узнать самостоятельно). **Исправьте конфликты**.
+<details><summary>actions</summary>
+
+```bash
+$ git checkout patch2
+Switched to branch 'patch2'
+$ git pull --rebase origin main
+From https://github.com/Dan41kPlay/lab02
+ * branch            main       -> FETCH_HEAD
+Auto-merging hello_world.cpp
+CONFLICT (content): Merge conflict in hello_world.cpp
+error: could not apply 20d75d2... apply Mozilla code style to hello_world
+Could not apply 20d75d2... apply Mozilla code style to hello_world
+$ cat hello_world.cpp
+#include <iostream>
+#include <string>
+
+<<<<<<< HEAD
+int main() {
+    std::string name; // name of the user will be stored here (umm aktually this is a different comment now get rekt)
+    std::cout << "Enter your name: "; // prompt the user to enter their name
+    std::cin >> name; // read the name
+    std::cout << "Hello world from " << name << std::endl; // print greetings to the world from the user
+    return 0; // end program
+=======
+int
+main()
+{
+  std::string name;                 // name of the user will be stored here
+  std::cout << "Enter your name: "; // prompt the user to enter their name
+  std::cin >> name;                 // read the name
+  std::cout << "Hello world from " << name
+            << std::endl; // print greetings to the world from the user
+  return 0;               // end program
+>>>>>>> patch2
+}
+$ nano hello_world.cpp 
+$ git add hello_world.cpp 
+$ git rebase --continue
+[detached HEAD 4b2617b] apply Mozilla code style to hello_world
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+Successfully rebased and updated refs/heads/patch2.
+```
+</details>
+
 7. Сделайте *force push* в ветку `patch2`
+<details><summary>actions</summary>
+
+```bash
+$ git push --force-with-lease origin patch2
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 426 bytes | 426.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/Dan41kPlay/lab02.git
+ + 20d75d2...4b2617b patch2 -> patch2 (forced update)
+```
+</details>
+
 8. Убедитель, что в pull-request пропали конфликтны. 
+> Conflicts did in fact disappear
+
 9. Вмержите pull-request `patch2 -> master`.
+> Merged `patch2` into `main` via github.com and returned to `main` and updated it locally
+<details><summary>actions</summary>
+
+```bash
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+$ git pull origin main
+remote: Enumerating objects: 1, done.
+remote: Counting objects: 100% (1/1), done.
+remote: Total 1 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (1/1), 915 bytes | 915.00 KiB/s, done.
+From https://github.com/Dan41kPlay/lab02
+ * branch            main       -> FETCH_HEAD
+   4db6187..a1f38e6  main       -> origin/main
+Updating 4db6187..a1f38e6
+Fast-forward
+ hello_world.cpp | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+$ git branch -d patch2
+```
+</details>
+
