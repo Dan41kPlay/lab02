@@ -357,6 +357,20 @@ main()
 >>>>>>> patch2
 }
 $ nano hello_world.cpp 
+$ cat hello_world.cpp 
+#include <iostream>
+#include <string>
+
+int
+main()
+{
+  std::string name;                 // name of the user will be stored here (umm aktually this is a different comment now)
+  std::cout << "Enter your name: "; // prompt the user to enter their name
+  std::cin >> name;                 // read the name
+  std::cout << "Hello world from " << name
+            << std::endl; // print greetings to the world from the user
+  return 0;               // end program
+}
 $ git add hello_world.cpp 
 $ git rebase --continue
 [detached HEAD 4b2617b] apply Mozilla code style to hello_world
@@ -409,3 +423,4 @@ $ git branch -d patch2
 ```
 </details>
 
+And now all things are done. yay!
