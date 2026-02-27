@@ -6,6 +6,7 @@
 1. Создайте пустой репозиторий на сервисе github.com (или gitlab.com, или bitbucket.com).
 > Created an empty repository on github.com with MIT license
 2. Выполните инструкцию по созданию первого коммита на странице репозитория, созданного на предыдещем шаге.
+<details><summary>actions</summary>
 ```bash
 $ git init
 Initialized empty Git repository in /home/dp/Documents/sem02_TP/lab02/.git/
@@ -30,12 +31,60 @@ To https://github.com/Dan41kPlay/lab02.git
    941c4d3..a193c8a  main -> main
 branch 'main' set up to track 'origin/main'.
 ```
+</details>
 
 3. Создайте файл `hello_world.cpp` в локальной копии репозитория (который должен был появиться на шаге 2). Реализуйте программу **Hello world** на языке C++ используя плохой стиль кода. Например, после заголовочных файлов вставьте строку `using namespace std;`.
+```bash
+$ nano hello_world.cpp
+$ cat hello_world.cpp
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    cout << "Hello world" << endl;
+    return 0;
+}
+```
+
 4. Добавьте этот файл в локальную копию репозитория.
+```bash
+$ git add hello_world.cpp
+```
+
 5. Закоммитьте изменения с *осмысленным* сообщением.
+```bash
+$ git commit -m "create hello_world program in c++ (needs refactoring)"
+[main f93f8a5] create hello_world program in c++ (needs refactoring)
+ 1 file changed, 8 insertions(+)
+ create mode 100644 hello_world.cpp
+```
+
 6. Изменитьте исходный код так, чтобы программа через стандартный поток ввода запрашивалось имя пользователя. А в стандартный поток вывода печаталось сообщение `Hello world from @name`, где `@name` имя пользователя.
+```bash
+$ nano hello_world.cpp
+$ cat hello_world.cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string name;
+    cout << "Enter your name: ";
+    cin >> name;
+    cout << "Hello world from " << name << endl;
+    return 0;
+}
+```
+
 7. Закоммитьте новую версию программы. Почему не надо добавлять файл повторно `git add`?
+```bash
+$ git commit -am "add name prompt to hello_world"
+[main 16275df] add name prompt to hello_world
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+```
+
 8. Запуште изменения в удалёный репозиторий.
 9. Проверьте, что история коммитов доступна в удалёный репозитории.
 
