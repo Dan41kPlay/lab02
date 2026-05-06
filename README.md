@@ -12,7 +12,7 @@
 $ git init
 Initialized empty Git repository in /home/dp/Documents/sem02_TP/lab02/.git/
 $ git branch -m main
-$ git remote add https://github.com/Dan41kPlay/lab02.git
+$ git remote add origin https://github.com/Dan41kPlay/lab02.git
 $ git pull https://github.com/Dan41kPlay/lab02.git main
 From https://github.com/Dan41kPlay/lab02
  * branch            main       -> FETCH_HEAD
